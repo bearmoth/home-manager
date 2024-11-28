@@ -17,9 +17,22 @@
 		pkgs = import nixpkgs { inherit system; };
 	in {
 		homeConfigurations = {
+			desktop = home-manager.lib.homeManagerConfiguration {
+				inherit pkgs;
+				modules = [
+					./home-config.nix
+					./profiles/desktop.nix
+					./programs
+				];
+			};
+
 			minimal = home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
-				modules = [ ./profiles/minimal.nix ./programs ];
+				modules = [
+					./home-config.nix
+					./profiles/minimal.nix
+					./programs
+				];
 			};
 		};
 	};

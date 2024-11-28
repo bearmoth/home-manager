@@ -1,3 +1,6 @@
 { lib, ... }: {
-	imports = [ ./shell-utils ];
+	imports = [
+		./browsers
+		./shell-utils
+	];
 }
