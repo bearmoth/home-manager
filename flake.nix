@@ -20,6 +20,7 @@
 			desktop = home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
 				modules = [
+					./desktop-environment
 					./home-config.nix
 					./profiles/desktop.nix
 					./programs
