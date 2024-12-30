@@ -8,6 +8,7 @@ in {
 		./fzf.nix
 		./git.nix
 		./home-manager.nix
+		./lazygit.nix
 		./neofetch.nix
 		./ripgrep.nix
 		./stow.nix
@@ -23,6 +24,7 @@ in {
 		fzf.enable = lib.mkDefault true;
 		git.enable = lib.mkDefault true;
 		home-manager.enable = lib.mkDefault true;
+		lazygit.enable = lib.mkDefault true;
 		neofetch.enable = lib.mkDefault true;
 		ripgrep.enable = lib.mkDefault true;
 		zoxide.enable = lib.mkDefault true;
