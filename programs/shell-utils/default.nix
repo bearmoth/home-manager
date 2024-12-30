@@ -5,6 +5,7 @@ in {
 	imports = [
 		./bat.nix
 		./eza.nix
+		./fd.nix
 		./fzf.nix
 		./git.nix
 		./home-manager.nix
@@ -21,6 +22,7 @@ in {
 		# Enabled by default
 		bat.enable = lib.mkDefault true;
 		eza.enable = lib.mkDefault true;
+		fd.enable = lib.mkDefault true;
 		fzf.enable = lib.mkDefault true;
 		git.enable = lib.mkDefault true;
 		home-manager.enable = lib.mkDefault true;
