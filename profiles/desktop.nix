@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:
 {
-	browsers.enable = true;
+	firefox.enable = true;
 	shell-utils.enable = true;
 
 	hyprland.enable = true;

@@ -7,6 +7,7 @@ in {
 		./direnv.nix
 		./eza.nix
 		./fd.nix
+		./firefox.nix
 		./fzf.nix
 		./git.nix
 		./home-manager.nix
@@ -34,6 +35,7 @@ in {
 		zoxide.enable = lib.mkDefault true;
 
 		# Disabled by default	
+		firefox.enable = lib.mkDefault false;
 		stow.enable = lib.mkDefault false;
 	};
 }

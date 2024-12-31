@@ -20,19 +20,19 @@
 			desktop = home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
 				modules = [
+					./profiles/desktop.nix
+					./apps
 					./desktop-environment
 					./home-config.nix
-					./profiles/desktop.nix
-					./programs
 				];
 			};
 
 			minimal = home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
 				modules = [
-					./home-config.nix
 					./profiles/minimal.nix
-					./programs
+					./apps
+					./home-config.nix
 				];
 			};
 		};
