@@ -10,4 +10,6 @@ in {
 		# Don't ask questions!
 		stateVersion = "23.11";
 	};
+
+  xdg.enable = true;
 }
