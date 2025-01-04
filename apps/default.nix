@@ -13,6 +13,7 @@ in {
 		./home-manager.nix
 		./lazygit.nix
 		./neofetch.nix
+		./neovim.nix
 		./ripgrep.nix
 		./stow.nix
 		./zoxide.nix
@@ -31,6 +32,7 @@ in {
 		home-manager.enable = lib.mkDefault true;
 		lazygit.enable = lib.mkDefault true;
 		neofetch.enable = lib.mkDefault true;
+		neovim.enable = lib.mkDefault true;
 		ripgrep.enable = lib.mkDefault true;
 		zoxide.enable = lib.mkDefault true;
 
