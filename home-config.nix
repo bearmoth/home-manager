@@ -1,15 +1,28 @@
-{ ... }:
+{ config, lib, ... }:
 let
-	user = "phil";
+	username = "phil";
+  homePath = "/home";
+  cfg = config.home;
 in {
-	home = {
-		username = user;
-		homeDirectory = "/home/${user}";
-
-		# You don't need to change this after the first build, ever.
-		# Don't ask questions!
-		stateVersion = "23.11";
+	options.home = {
+	   configSourceDirectory = lib.mkOption {
+	     default = "${cfg.homeDirectory}/home-manager/config";
+	     type = lib.types.str;
+	   };
 	};
 
-  xdg.enable = true;
+	config = {
+    home = {
+    	inherit username;
+    	
+      homeDirectory = "${homePath}/${username}";
+
+    	# You don't need to change this after the first build, ever.
+    	# Don't ask questions!
+    	stateVersion = "23.11";
+
+    };
+      
+    xdg.enable = true;
+  };
 }

@@ -1,18 +1,17 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.neovim;
+	cfg = config.neovim;
+	cfgPath = "${config.home.configSourceDirectory}/nvim";
 in  {
   options.neovim.enable = lib.mkEnableOption "neovim (a hyperextensible text editor)";
 
   config = lib.mkIf cfg.enable {
     xdg.configFile.nvim = {
       # An out-of-store symlink is required so Neovim can modify its own lock files.
-      # Unfortunately, an absolute path must be given, otherwise Nix creates a symlink
-      # to its store.
-      source = config.lib.file.mkOutOfStoreSymlink "/home/phil/home-manager/config/nvim";
+      source = config.lib.file.mkOutOfStoreSymlink cfgPath;
       recursive = false;
     };
-   
+
     home.packages = with pkgs; [ neovim ];
   };
 }
