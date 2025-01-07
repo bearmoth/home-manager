@@ -1,21 +1,21 @@
 { config, lib, ... }:
 let
-	username = "phil";
+	user = "phil";
   homePath = "/home";
+  repoDirectory = "home-manager";
   cfg = config.home;
 in {
 	options.home = {
 	   configSourceDirectory = lib.mkOption {
-	     default = "${cfg.homeDirectory}/home-manager/config";
+	     default = "${cfg.homeDirectory}/${repoDirectory}/config";
 	     type = lib.types.str;
 	   };
 	};
 
 	config = {
     home = {
-    	inherit username;
-    	
-      homeDirectory = "${homePath}/${username}";
+    	username = user;
+      homeDirectory = "${homePath}/${user}";
 
     	# You don't need to change this after the first build, ever.
     	# Don't ask questions!
