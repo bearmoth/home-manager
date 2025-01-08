@@ -5,6 +5,12 @@ in {
 	options.bat.enable = lib.mkEnableOption "bat (a modern replacement for cat)";
 
 	config = lib.mkIf cfg.enable {
-		home.packages = with pkgs; [ bat ];
+		home = {
+      packages = with pkgs; [ bat ];
+      shellAliases = {
+        # Reassign cat to instead run bat :D
+        cat = "bat";
+      };
+    };
 	};
 }
