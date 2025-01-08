@@ -12,6 +12,13 @@ in  {
       recursive = false;
     };
 
-    home.packages = with pkgs; [ neovim ];
+    home = {
+      packages = with pkgs; [ neovim ];
+      shellAliases = {
+        nv = "nvim";
+        vim = "nvim";
+        vimdiff = "nvim -d";
+      };
+    };
   };
 }
