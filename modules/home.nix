@@ -16,11 +16,13 @@ in {
     home = {
     	username = user;
       homeDirectory = "${homePath}/${user}";
+      sessionVariables = {
+        EDITOR = "VIM";
+      };
 
     	# You don't need to change this after the first build, ever.
     	# Don't ask questions!
     	stateVersion = "23.11";
-
     };
       
     xdg.enable = true;
