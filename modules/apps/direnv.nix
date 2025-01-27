@@ -6,5 +6,15 @@ in {
 
 	config = lib.mkIf cfg.enable {
 		home.packages = with pkgs; [ direnv ];
+
+    programs = {
+      bash.initExtra = ''
+        eval "$(direnv hook bash)"
+      '';
+
+      zsh.initExtra = ''
+        eval "$(direnv hook zsh)"
+      '';
+    };
 	};
 }
