@@ -1,21 +1,19 @@
 { config, lib, ... }:
 let
-	user = "phil";
-  homePath = "/home";
-  repoDirectory = "home-manager";
+  repoDirectory = "${config.xdg.configHome}/home-manager";
   cfg = config.home;
 in {
 	options.home = {
 	   configSourceDirectory = lib.mkOption {
-	     default = "${cfg.homeDirectory}/${repoDirectory}/config";
+	     default = "${repoDirectory}/config";
 	     type = lib.types.str;
 	   };
 	};
 
 	config = {
     home = {
-    	username = user;
-      homeDirectory = "${homePath}/${user}";
+    	username = "phil";
+      homeDirectory = "/home/phil";
       sessionVariables = {
         EDITOR = "VIM";
       };
