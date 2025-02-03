@@ -5,6 +5,11 @@ in {
 	options.lazygit.enable = lib.mkEnableOption "lazygit (tui for git)";
 
 	config = lib.mkIf cfg.enable {
-		home.packages = with pkgs; [ lazygit ];
+		home = {
+      packages = with pkgs; [ lazygit ];
+      shellAliases = {
+        lgit="lazygit";
+      };
+    };
 	};
 }
