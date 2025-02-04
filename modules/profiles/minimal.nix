@@ -1,4 +1,8 @@
 { lib, pkgs, ... }:
 {
-  # Only adds applications/config that is enabled by default
+  config = {
+    home.homeDirectory = "/home/phil/";
+
+    # Only adds applications/config that is enabled by default
+  };
 }

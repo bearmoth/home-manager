@@ -11,18 +11,8 @@ in {
 	};
 
 	config = {
-    home = {
-    	username = "phil";
-      homeDirectory = "/home/phil";
-      sessionVariables = {
-        EDITOR = "VIM";
-      };
-
-    	# You don't need to change this after the first build, ever.
-    	# Don't ask questions!
-    	stateVersion = "23.11";
-    };
-      
+# TODO: these need a new home
+    home.sessionVariables.EDITOR = "VIM";
     xdg.enable = true;
   };
 }

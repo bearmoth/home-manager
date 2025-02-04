@@ -8,43 +8,42 @@
 			url = "github:nix-community/home-manager/release-24.11";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-
-    nix-darwin = {
-      url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 	};
 
 	outputs = { nixpkgs, home-manager, nix-darwin, ... }:
 	let
 		lib = nixpkgs.lib;
 		systemLinux = "x86_64-linux";
-		systemDarwin = "x86_64-darwin";
+		systemDarwin = "aarch64-darwin";
+    homeManagerConfiguration = home-manager.lib.homeManagerConfiguration;
 	in {
 		homeConfigurations = {
-			desktop = home-manager.lib.homeManagerConfiguration {
-				inherit pkgs;
-        pkgs = import nixpkgs { system = systemLinux };
+      # aarch64 based MacOS systems
+      darwin = homeManagerConfiguration {
+        pkgs = import nixpkgs { system = systemDarwin; };
+        modules = [
+					./modules
+					./modules/profiles/darwin.nix
+        ];
+      };
+
+      # x86_64 based Linux systems with a desktop environment
+			desktop = homeManagerConfiguration {
+        pkgs = import nixpkgs { system = systemLinux; };
 				modules = [
 					./modules
 					./modules/profiles/desktop.nix
 				];
 			};
 
-			minimal = home-manager.lib.homeManagerConfiguration {
-				inherit pkgs;
+      # x86_64 based Linux systems with a minimal environment
+			minimal = homeManagerConfiguration {
+        pkgs = import nixpkgs { system = systemLinux; };
 				modules = [
 					./modules
 					./modules/profiles/minimal.nix
 				];
 			};
 		};
-
-    darwinConfigurations = {
-      work = {
-        pkgs = import nixpkgs { system = systemDarwin };
-        modules = [];
-      };
-    };
 	};
 }
